@@ -1,0 +1,13 @@
+LOG.
+
+08/03/2017
+
+Cambios:
+*En los estilos css los id #ventas y #subasta fueron reemplazados por .ventas y .subasta.
+*Se arregló la url de la imagen de la publicación de 'MacBook Air'.
+*id="subasta" cambió a class="subasta" en las publicaciones de las subastas.
+*id="ventas" cambió a class="ventas" en la cabeza de la página.
+
+Por hacer:
+*En el estilo css de .ventas hay una línea (17) que dice solo 'margi'.
+*Url de la imagen de 'Tableta asus' no valida.
