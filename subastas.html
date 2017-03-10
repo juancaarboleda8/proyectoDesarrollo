@@ -62,11 +62,35 @@
     img,p{
       color: red;
       text-align: center;
+
     }
     h3{
       text-align: center;
       size: 20px;
       color: green;
+    }
+
+    strong{
+       color: green;
+       display: inline-block;
+       text-align: center;
+       
+      
+    }
+    .time{
+      text-align: center;
+    }
+
+    #segundos{
+       
+    }
+
+    #minutos{
+        
+    }
+
+    #horas{
+        
     }
 
     
@@ -80,9 +104,56 @@
     function volverColor(argument) {
       argument.style.color="white";
     }
+
+    var segundo=0;
+    var minuto=0;
+    var hora=0;
+
+    function inicio() {
+      setInterval(cronometrar,1000);
+    }
+
+      function cronometrar() {
+        if (segundo < 59){
+          segundo++;
+          if (segundo < 10) {
+            segundo = "0"+segundo;
+          }
+          segundos.innerHTML = segundo;
+        }
+        if (segundo == 59) {
+          segundo = 0;
+          segundos.innerHTML="00";
+        }
+        if (segundo == 0) {
+           if (minuto < 59) {
+             minuto++;
+           if (minuto < 10) {
+             minuto="0"+minuto;
+           }
+            minutos.innerHTML=minuto;
+        }
+        }
+          if (minuto==59) {
+          minuto=0;
+          minutos="00";
+        }
+
+        if (minuto==5) {
+          segundo=0;
+          segundos.innerHTML="00";
+          minuto=0;
+          minutos.innerHTML="00";
+      
+        }
+
+      }
+
+
+
   </script>
 </head>
-<body>
+<body onload="inicio()">
  <div id="cabeza">
    <h2>SubastaYa.com</h2>
    <div class="ventas"><button id="boton">Ingresar</button></div>
@@ -91,7 +162,7 @@
  </div>
 
  <div id="cuerpo">
-   <div class="subasta"><img src="https://www.o2.co.uk/shop/homepage/images/shop15/brand/apple/iphone-7-plus/apple-iphone-7-plus-gallery-img-6.jpg"><p>Iphone 7</p><h3>$50.000</h3></div>
+   <div class="subasta"><img src="https://www.o2.co.uk/shop/homepage/images/shop15/brand/apple/iphone-7-plus/apple-iphone-7-plus-gallery-img-6.jpg"><p>Iphone 7</p><h3>$50.000</h3><div class="time"><strong id="horas">00</strong><strong>:</strong><strong id="minutos">00</strong><strong>:</strong><strong id="segundos">00</strong></div></div>
 
    <div class="subasta"><img src="http://www.laptopmag.com/images/uploads/4758/g/apple-macbook-2016-nw-g03.jpg"><p>MacBook Air</p><h3>$50.000</h3></div>
 
