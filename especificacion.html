@@ -2,8 +2,183 @@
 <html>
 <head>
 	<title>parte de producto</title>
+	<meta charset="utf-8">
 	<script type="text/javascript">
 		
+
+		function InformacionProveedor() {
+			document.getElementById("clasificacion").innerHTML= "Informacion proveedor";
+			document.getElementById("primero").innerHTML="<h2>David Andres</h2> en la empresa ah participado en muchas de las ofertas y demandas que hay en la pagina es un experto a la hora de vender productos de buena calidad y a muy buen bajo precio, tambien compra demasido y es catalogado como uno de los mejores que tenemos en este momento en todo la palicacion,Hizo parte de la nómina con la Selección de fútbol de Colombia Sub-20 en la Copa Mundial de Fútbol Juvenil de 2005,5 de igual manera, ya ha recibido convocatorias para hacer parte de la selección de mayores. En esta, se adueñó del puesto en las eliminatorias a Sudáfrica 2010, además se ha apoderado de la portería y se ha ganado la confianza de la afición colombiana, a pesar de su corta edad.";
+			document.getElementById("parteInferior").innerHTML="Bibliografia";
+			document.getElementById("segundo").innerHTML="David Ospina David Ospina Ramírez (Itagüí, Antioquia, Colombia; 31 de agosto de 1988) es un futbolista colombiano. Se desempeña en la posición de guardameta y su actual equipo es el Arsenal Football Club de la Premier League inglesa. Atlético Nacional La carrera futbolística de David arrancó en el Atlético Nacional de su ciudad natal. En 2005 le fue ofrecido un contrato profesional por 3 años. A partir de su primera campaña como profesional ocupó su puesto en la primera plantilla, Y con solo 17 años fue campeón con el equipo en el Apertura 2005. En el 2007, Ospina con 19 años fue una de las figuras del Nacional que fue bicampeón del fútbol colombiano (Apertura 2007 y Finalización 2007). Para el año 2008 ya suscitaba el interés de clubes europeos por su gran desempeño, y finalmente se daría su traspaso al fútbol europeo fichando por el OGC Niza de Francia. Ospina terminaría con 97 partidos jugados en el equipo colombiano.";
+
+			    var imagen = document.getElementById("objetivo");
+			    imagen.remove();
+
+			    var ladoImg = document.getElementById("infoProducto");
+			    ladoImg.remove();
+
+		}
+
+		function InformacionAyuda() {
+			document.getElementById("clasificacion").innerHTML= "Ayuda";
+			document.getElementById("primero").innerHTML="En resumen: subastaYa.com encuentra entre más de 70.000 profesionales VO autorizados aquel que pague más por su vehículo. Su vehículo puede estar vendido en pocos días, teniendo que pagar comisión sólo en caso de éxito. Usted sólo paga comisión cuando su vehículo se vende a través de Autorola.es. Todo lo que debe hacer es rellenar nuestro formulario de descripción del vehículo de fácil manejo para el usuario y establecer su precio mínimo. Sólo usted conoce su precio mínimo. Cuando los profesionales VO licitan, sólo saben si están por debajo o por encima de su precio mínimo y pueden decidir en consecuencia si desean subir su oferta. Si un concesionario ofrece más que el precio mínimo, prácticamente ha comprado el coche. No obstante, esto sólo dura hasta que otro concesionario ofrece más. De este modo tiene garantizado el mejor precio posible en la subasta.Cuando la oferta de un comerciante es superada por otro, el primero recibe un aviso automático de que su puja ha sido superada y tiene la posibilidad de volver a pujar.De esta manera, la subasta le asegura el precio más alto del mercado para su vehículo. De manera automática descubre exactamente al comprador que está dispuesto a pagar más.";
+
+			document.getElementById("parteInferior").innerHTML="Quienes somos";
+			document.getElementById("segundo").innerHTML="nosotros somos estudiantes de ing de sistemas de  la universidad de medelllin que tienen como objetivo darles a los usuarios de la internet una posibilidad de que puedan comprar sus productos y que las obtengan a bajo precio";
+
+			var imagen = document.getElementById("objetivo");
+			    imagen.remove();
+
+			    var ladoImg = document.getElementById("infoProducto");
+			    ladoImg.remove();
+		}
+
+		function informacionProducto() {
+		    document.getElementById("clasificacion").innerHTML="Iphone7";
+            document.getElementById("primero").innerHTML="";
+
+             var x = document.createElement("IMG");
+             x.setAttribute("src", "http://www.laptopmag.com/images/uploads/4758/g/apple-macbook-2016-nw-g03.jpg");
+             x.setAttribute("width", "404");
+             x.setAttribute("height", "328");
+             x.setAttribute("alt", "The Pulpit Rock");
+             x.setAttribute("id","objetivo");
+             document.getElementById("cuerpo").appendChild(x);
+
+
+             document.getElementById("parteInferior").innerHTML="especificacion";
+            document.getElementById("segundo").innerHTML="DIMENSIONES FÍSICAS	138,3 x 67,1 x 7,1 milímetros, 138 gramos PANTALLA	IPS 4,7 pulgadas RESOLUCIÓN	1.334 x 750 (unos 326 ppp) PROCESADOR	A10 Fusion de 64 bits, coprocesador de movimiento M10 NÚCLEOS	Quad-core GRÁFICA	Hexa-core RAM	2 GB MEMORIA	32/128/256 GB (no ampliables con microSD) VERSIÓN SOFTWARE	iOS 10.0.2 CONECTIVIDAD	4G, Bluetooth 4.2, Wi‑Fi a/b/g/n/ac, NFC CÁMARA TRASERA	12 megapíxeles, f/1.8, OIS, grabación 4K@30fps, flash 4 LED CÁMARA DELANTERA	7 megapíxeles, f/2.2, grabación 1080p OTROS	TouchID, resistencia al agua IP67<7br>3D Touch BATERÍA	1.960 mAh (no extraíble) PRECIO	769 euros el modelo de 32 G 879 euros el modelo de 128 GB 989 euros el modelo de 256 GB";
+
+             var y = document.createElement("div");
+             y.setAttribute("id","infoProducto"); 
+             document.getElementById("cuerpo").appendChild(y); 
+
+             var titulo=document.createElement("h2");
+             titulo.setAttribute("id","especific");
+             var p = document.createTextNode("Iphone7");
+             titulo.appendChild(p);
+             document.getElementById("infoProducto").appendChild(titulo);
+
+             var p1=document.createElement("p");
+             p1.setAttribute("class","venta");
+             p1.appendChild(document.createTextNode("proveedor: David Andres"));
+             var p2=document.createElement("p");
+             p2.setAttribute("class","venta");
+             p2.appendChild(document.createTextNode("ultima oferta: Fernanda"));
+             var p3=document.createElement("p");
+             p3.setAttribute("class","venta");
+             p3.appendChild(document.createTextNode("codigo : #123"));
+             var p4=document.createElement("p");
+             p4.setAttribute("class","venta");
+             p4.appendChild(document.createTextNode("fecha:2017/02/06"));
+
+             
+
+             document.getElementById("infoProducto").appendChild(p1);
+             document.getElementById("infoProducto").appendChild(p2);
+             document.getElementById("infoProducto").appendChild(p3);
+             document.getElementById("infoProducto").appendChild(p4);
+             
+
+             var tiempo = document.createElement("div");
+             tiempo.setAttribute("id","crono");
+             document.getElementById("infoProducto").appendChild(tiempo);
+
+             var div1 = document.createElement("div");
+             div1.setAttribute("id","d1");
+             document.getElementById("crono").appendChild(div1);
+
+             var div2 = document.createElement("div");
+             div2.setAttribute("id","d2");
+             document.getElementById("crono").appendChild(div2);
+
+             var div3 = document.createElement("div");
+             div3.setAttribute("id","d3");
+             document.getElementById("crono").appendChild(div3);
+
+             var div4 = document.createElement("div");
+             div4.setAttribute("id","d4");
+             document.getElementById("crono").appendChild(div4);
+
+             var div5 = document.createElement("div");
+             div5.setAttribute("id","d5");
+             document.getElementById("crono").appendChild(div5);
+
+             
+             var second=document.createElement("p");
+             second.setAttribute("id","segundos");
+             second.appendChild(document.createTextNode("00"));
+             document.getElementById("d5").appendChild(second);
+
+             var punto1=document.createElement("p");
+             punto1.appendChild(document.createTextNode(":"));
+             document.getElementById("d2").appendChild(punto1);
+
+             var minute=document.createElement("p");
+             minute.setAttribute("id","minutos");
+             minute.appendChild(document.createTextNode("00"));
+             document.getElementById("d3").appendChild(minute);
+
+             var punto2=document.createElement("p");
+             punto2.appendChild(document.createTextNode(":"));
+             document.getElementById("d4").appendChild(punto2);
+
+             var hour=document.createElement("p");
+             hour.setAttribute("id","horas");
+             hour.appendChild(document.createTextNode("00"));
+             document.getElementById("d1").appendChild(hour); 
+
+             var boton = document.createElement("button");
+             boton.setAttribute("cursor","pointer");
+             boton.appendChild(document.createTextNode("Apostar"));
+             document.getElementById("infoProducto").appendChild(boton);
+
+            }
+
+            var segundo=0;
+    var minuto=0;
+    var hora=0;
+
+    function inicio() {
+      setInterval(cronometrar,1000);
+    }
+
+      function cronometrar() {
+        if (segundo < 59){
+          segundo++;
+          if (segundo < 10) {
+            segundo = "0"+segundo;
+          }
+          segundos.innerHTML = segundo;
+        }
+        if (segundo == 59) {
+          segundo = 0;
+          segundos.innerHTML="00";
+        }
+        if (segundo == 0) {
+           if (minuto < 59) {
+             minuto++;
+           if (minuto < 10) {
+             minuto="0"+minuto;
+           }
+            minutos.innerHTML=minuto;
+        }
+        }
+          if (minuto==59) {
+          minuto=0;
+          minutos="00";
+        }
+
+        if (minuto==5) {
+          segundo=0;
+          segundos.innerHTML="00";
+          minuto=0;
+          minutos.innerHTML="00";
+      
+        }
+
+      }
 	</script>
 	<style type="text/css">
          #portada{
@@ -22,6 +197,7 @@
           .textportada{
           	color: white;
           	font-family: arial;
+          	cursor: pointer;
           }
         
          .opciones{
@@ -36,17 +212,119 @@
          	display: inline-block;
          	 width: 1200px;
          	 margin-top: 20px;
-         	 height: 500px;
+         	 height: 800px;
          	 margin-left: 30px;
          	 background-color: gray;
 
          }
+         #clasificacion{
+         	color: white;
+         	margin-left: 20px;
+         	
+         }
+         #parteInferior{
+         	color: white;
+         	margin-left: 20px;
+         
+
+         }
+          #primero{
+         	color: white;
+         	margin-left: 20px;
+         	
+
+         }
+         #segundo{
+         	color: white;
+         	margin-left: 20px;
+         	
+
+         }
+
+         img{
+         	margin-left: 30px;
+         	margin-top: 30px;
+         }
+
+         #infoProducto{
+         	float: right;
+         	background-color: gray;
+         	width: 500px;
+         	height: 328px;
+         	margin-right: 100px;
+         	margin-top: 30px;
+
+         }
+
+         #especific{
+         	color: white;
+         	text-align: center;
+
+         }
+
+         .venta{
+         	color: white;
+         	font-size: 22px;
+         	margin-top: 10px;
+         }
+
+         #crono{
+         	
+         	width: 430px;
+         	height: 50px;
+
+
+         }
+
+         #d1{
+         	display: inline-block;
+         }
+          #d2{
+         	display: inline-block;
+         }
+          #d3{
+         	display: inline-block;
+         }
+          #d4{
+         	display: inline-block;
+         }
+          #d5{
+         	display: inline-block;
+         }
+
+
+         #segundos{
+             color: white;
+             
+         }
+
+         #minutos{
+            color: white;
+            
+         }
+
+         #horas{
+            color: white;
+            
+         }
+
+         
 	</style>
 </head>
 <body>
-<div id="portada"><h1 id="titulo">subastaYa.com</h1><div class="opciones"><p class="textportada">informacion proveedor</p></div><div class="opciones"><p class="textportada">Informacion producto</p></div><div class="opciones"><p class="textportada">Ayuda</p></div></div>
+<div id="portada"><h1 id="titulo">subastaYa.com</h1><div class="opciones"><p class="textportada" onclick="InformacionProveedor()">informacion proveedor</p></div><div class="opciones"><p class="textportada" onclick="informacionProducto(),inicio()">Informacion producto</p></div><div class="opciones"><p class="textportada" onclick="InformacionAyuda()">Ayuda</p></div></div>
 
-<div id="cuerpo"></div>
+<div id="cuerpo">
+	<h2 id="clasificacion">Ayuda</h2>
+	<p id="primero">En resumen: subastaYa.com encuentra entre más de 70.000 profesionales VO autorizados aquel que pague más por su vehículo. Su vehículo puede estar vendido en pocos días, teniendo que pagar comisión sólo en caso de éxito. Usted sólo paga comisión cuando su vehículo se vende a través de Autorola.es. Todo lo que debe hacer es rellenar nuestro formulario de descripción del vehículo de fácil manejo para el usuario y establecer su precio mínimo.
+Sólo usted conoce su precio mínimo. Cuando los profesionales VO licitan, sólo saben si están por debajo o por encima de su precio mínimo y pueden decidir en consecuencia si desean subir su oferta.
+Si un concesionario ofrece más que el precio mínimo, prácticamente ha comprado el coche. No obstante, esto sólo dura hasta que otro concesionario ofrece más. De este modo tiene garantizado el mejor precio posible en la subasta.
+Cuando la oferta de un comerciante es superada por otro, el primero recibe un aviso automático de que su puja ha sido superada y tiene la posibilidad de volver a pujar.
+De esta manera, la subasta le asegura el precio más alto del mercado para su vehículo. De manera automática descubre exactamente al comprador que está dispuesto a pagar más.</p>
+
+	<h2 id="parteInferior">Quienes somos</h2>
+	<p id="segundo">nosotros somos estudiantes de ing de sistemas de  la universidad de medelllin que tienen como objetivo darles a los usuarios de la internet una posibilidad de que puedan comprar sus productos y que las obtengan a bajo precio</p>
+</div>
 
 </body>
 </html>
