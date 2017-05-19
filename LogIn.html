@@ -10,7 +10,7 @@
 			padding-top: 0.5ex;
 		}
 		#container{
-			background-color: black;
+			background-color: #581c1c;
 			margin: 0 auto;
 			width: 20%;
 			position: relative;
@@ -32,28 +32,70 @@
 		}
 		body{
 			text-align: center;
-			/*background-color: #fdf498;*/
+			background-color: #fdf498;
 		}
 		h1{
 			font-family: sans-serif;
 			font-weight: normal;
 			color: white;
 		}
+		h2{
+			font-family: sans-serif;
+		}
 	</style>
+
+	<script type="text/javascript">
+		function guardarDatos() {
+			var user = {};
+			user.nombre = document.getElementById('Usuario').value;
+			user.contraseña = document.getElementById('Contraseña').value;
+			return user;
+		}
+
+		function ingresar() {
+		var usuario=guardarDatos();
+		
+		var serializado = "";
+		// Serializar el objeto como una cadena de texto JSON
+		serializado = JSON.stringify( usuario );
+		window.alert( serializado );
+		// Crear un objeto para hacer peticiones HTTP
+		var request = new XMLHttpRequest();
+		// Abrir una peticion HTTP POST a la url deseado y no asincronico
+		request.open( "POST", "/ingresar", false );
+		// Ejecuta la peticion HTTP
+		request.send( serializado );
+		
+		// responseText contiene el cuerpo de la respuesta enviada desde el servidor
+		// en el objeto XMLHttpRequest
+		var respuesta;
+		respuesta = JSON.parse( request.responseText );  
+		console.log( "Respuesta:" );
+		console.log( respuesta );
+		
+		if(respuesta.estado == 'ok'){
+			// Login correcto
+			console.log("ingreso correctamente");
+			window.location.href = '/perfil.html';
+		} else {
+			alert("no funciono");
+		}
+		}
+	</script>
 </head>
 <body>
 <h2>Log In</h2>
 <div id="container">
 	<div class="input">
 		<h1>Usuario</h1>
-		<input type="text" name="Usuario">
+		<input type="text" id="Usuario">
 	</div>
 	<div class="input">
 		<h1>Contraseña</h1>
-		<input type="text" name="Contraseña">
+		<input type="text" id="Contraseña">
 	</div>
 	
-	<a href="./subastas.html"><button id="ingresar">Ingresar</button></a>
+	<a><button id="ingresar" onclick="ingresar()">Ingresar</button></a>
 
 
 </div>

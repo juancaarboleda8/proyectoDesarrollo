@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>www.miPerfil.com</title>
+	<style type="text/css">
+		#container{
+
+		}
+		body{
+			text-align: center;
+			background-color: #eef0c9;
+			font-family: sans-serif;
+		}
+		h1{
+			
+			font-weight: normal;
+			
+		}
+
+
+
+	</style>
+	<script type="text/javascript">
+      function cook() {
+      	var misCookies = document.cookie.split(";");
+        console.log(misCookies);
+        return misCookies;
+      }
+
+      function cargarDatos() {
+      	var xml = new XMLHttpRequest();
+	      xml.open("GET","/usuarios",false);
+	      xml.send( );
+	      var respuesta = xml.responseText;
+          console.log(respuesta);
+          return JSON.parse(respuesta);
+      }
+
+      function imprimir() {
+      	 var datos = cargarDatos();
+      	 var nombre;
+		 var user = cook();
+	     console.log(user[user.length - 1]);
+
+	     for (var i = 0; i < datos.length; i++) {
+	     	nombre ="nombre="+datos[i].nombre;
+	     	if (user[0] == nombre){
+	     		document.getElementById("nombre").innerHTML = datos[i].nombre;
+	     		document.getElementById("correo").innerHTML = datos[i].Correo;
+                document.getElementById("telefono").innerHTML = datos[i].numero;
+                document.getElementById("pais").innerHTML = datos[i].pais;
+	     	}else{
+	     		console.log("no concuerdan");
+	     		console.log(user[0]);
+	     		console.log(nombre);
+	     	}
+	     }
+      }
+	</script>
+
+	<style type="text/css">
+		h1{
+			text-align: center;
+		}
+
+		p{
+			font-family: arial;
+
+		}
+		label{
+			font-family: arial;
+			display: inline;
+		}
+	</style>
+</head>
+<body onload="imprimir()">
+    <h1>Bienvenido</h1>
+<div id="container">
+    <p>
+    	<p>Nombre: </p><label id="nombre"></label>
+    </p>
+
+    <p>
+    	<p>Correo: </p><label id="correo"></label>
+    </p>
+
+    <p>
+    	<p>Telefono: </p><label id="telefono"></label>
+    </p>
+
+    <p>
+    	<p>Pais: </p><label id="pais"></label>
+    </p>
+</div>
+</body>
+</html>

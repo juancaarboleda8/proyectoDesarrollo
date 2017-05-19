@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>www.subastaYa.com</title>
+  <meta charset="utf-8">
+  <style type="text/css">
+    #cabeza{
+      display: inline-block;
+      background-color: black;
+      height: 70px;
+      width: 100%;
+    }
+
+    .ventas{
+      height: 20px;
+      width: 100px;
+      display: inline-block;
+      margin-top: 23px;
+      margin-right: 15px;
+      float: right;
+      color: white;
+      cursor: pointer;
+
+    }
+    #Ingresar{
+      height: 17px;
+      width: 100px;
+      cursor: text;
+    }
+    #boton{
+      height: 23px;
+      width: 100px;
+      cursor: pointer;
+    }
+    h2{
+      color: white;
+      display: inline-block;
+      margin-left: 20px;
+    }
+    #cuerpo{
+      width: 100%;
+      
+      display: inline-block;
+      height: 100%;
+    }
+    .subasta{
+      height: 500px;
+       width: 300px;
+       background-color: white;
+       margin-right: 20px;
+       margin-left: 40px;
+       display: inline-block;
+       margin-top: 30px;
+       border: 2px solid;
+    }
+    img{
+      height: 300px;
+      width: 300px;
+
+    }
+
+    img,p{
+      color: red;
+      text-align: center;
+
+    }
+    h3{
+      text-align: center;
+      size: 20px;
+      color: green;
+    }
+
+    strong{
+       color: green;
+       display: inline-block;
+       text-align: center;
+       
+      
+    }
+    .time{
+      text-align: center;
+    }
+
+    #segundos{
+       
+    }
+
+    #minutos{
+        
+    }
+
+    #horas{
+        
+    }
+
+    
+
+  </style>
+
+  <script type="text/javascript">
+    function cambiarColor(argument) {
+      argument.style.color="gray";
+    }
+    function volverColor(argument) {
+      argument.style.color="white";
+    }
+
+    var segundo=0;
+    var minuto=0;
+    var hora=0;
+
+    function inicio() {
+      setInterval(cronometrar,1000);
+    }
+
+      function cronometrar() {
+        if (segundo < 59){
+          segundo++;
+          if (segundo < 10) {
+            segundo = "0"+segundo;
+          }
+          segundos.innerHTML = segundo;
+        }
+        if (segundo == 59) {
+          segundo = 0;
+          segundos.innerHTML="00";
+        }
+        if (segundo == 0) {
+           if (minuto < 59) {
+             minuto++;
+           if (minuto < 10) {
+             minuto="0"+minuto;
+           }
+            minutos.innerHTML=minuto;
+        }
+        }
+          if (minuto==59) {
+          minuto=0;
+          minutos="00";
+        }
+
+        if (minuto==5) {
+          segundo=0;
+          segundos.innerHTML="00";
+          minuto=0;
+          minutos.innerHTML="00";
+      
+        }
+
+      }
+
+
+  </script>
+</head>
+<body onload="inicio()">
+ <div id="cabeza">
+   <h2>SubastaYa.com</h2>
+   <div class="ventas"><button id="boton">Ingresar</button></div>
+   <div class="ventas"><input type="text" id="Ingresar"></div>
+   <a href="./LogIn.html"><div class="ventas" onmouseover="cambiarColor(this)" onmouseout="volverColor(this)">Registrar</div></a>
+ </div>
+
+ <div id="cuerpo">
+   <div class="subasta"><img src="https://www.o2.co.uk/shop/homepage/images/shop15/brand/apple/iphone-7-plus/apple-iphone-7-plus-gallery-img-6.jpg" ><p>Iphone 7</p><h3>$50.000</h3><div class="time"><strong id="horas">00</strong><strong>:</strong><strong id="minutos">00</strong><strong>:</strong><strong id="segundos">00</strong></div></div>
+
+   <div class="subasta"><a href="./especificacion.html"><img src="http://www.laptopmag.com/images/uploads/4758/g/apple-macbook-2016-nw-g03.jpg"></a><p>MacBook Air</p><h3>$50.000</h3></div>
+
+   <div class="subasta"><img src="https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/201608/26/00157063410542009_1__640x640.jpg"><p>Celular Huawei</p><h3>$50.000</h3></div>
+
+   <div class="subasta"><img src="http://loogic.com/wp-content/uploads/2013/11/mac.jpg"><p>Macbook torre</p><h3>$50.000</h3></div>
+
+   <div class="subasta"><img src="https://img.difoosion.com/wp-content/blogs.dir/17/files/2013/01/Apple-TV.jpg"><p>Apple tv</p><h3>$50.000</h3></div>
+
+   <div class="subasta"><img src="https://www.marketingdirecto.com/wp-content/uploads/2013/05/iwatch2.jpg"><p>Apple watch</p><h3>$50.000</h3></div>
+
+   <div class="subasta"><img src="https://http2.mlstatic.com/parlante-y-base-d-carga-philips-p-productos-apple-d-30-pines-D_NQ_NP_850911-MLU20671434386_042016-F.jpg"><p>Ipad Apple</p><h3>$50.000</h3></div>
+
+   <div class="subasta"><img src="http://www.pcactual.com/medio/2012/03/22/portafolio_samsung_2012_detalle_4_618x501.jpg"><p>Camara </p><h3>$50.000</h3></div>
+
+   <div class="subasta"><img src="http://www.capital.com.pa/wp-content/uploads/2013/09/GALAXY_Gear.jpg"><p>Reloj Samsumg</p><h3>$50.000</h3></div>
+
+   <div class="subasta"><img src="http://2.bp.blogspot.com/-xxXRcCpxXl4/VM-VlGUdjZI/AAAAAAAAAB0/mjppfZDEsUs/s1600/Televisores-Samsung.jpg"><p>Pantalla Samsumg</p><h3>$50.000</h3></div>
+
+   <div class="subasta"><img src="http://cronicasgeek.cd04iemih.maxcdn-edge.com/wp-content/uploads/2016/01/GalaxyTabProS_CES_2016.jpg"><p>Tableta asus</p><h3>$50.000</h3></div>
+
+   <div class="subasta"><img src="http://www.eluniversal.com.mx/sites/default/files/styles/f03-651x400/public/2015/12/09/tesla-model-s-auto.jpg?itok=Han-fdEW"><p>Carro tesla</p><h3>$50.000</h3></div>
+
+   <div class="subasta"><img src="http://www.samsung.com/es/a-fondo/images/linked/samsung-gear-s2-y-classic.png"><p>samsumg gear</p><h3>$50.000</h3></div>
+
+   <div class="subasta"><img src="http://e.rpp-noticias.io/xlarge/2016/10/04/2583801jpg.jpg"><p>google home</p><h3>$50.000</h3></div>
+
+   <div class="subasta"><img src="http://cdn1.smart-gsm.com/picture/google-pixel.jpg"><p>Reloj google</p><h3>$50.000</h3></div>
+
+   <div class="subasta"><img src="http://www.esteticamedica.info/data/img_cont/img_imagenes/img_gr/1690.jpg"><p>Reloj Huawei 2017</p><h3>$50.000</h3></div>
+ </div>
+
+</body>
+</html>

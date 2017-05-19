@@ -98,6 +98,7 @@
   </style>
 
   <script type="text/javascript">
+
     function cambiarColor(argument) {
       argument.style.color="gray";
     }
@@ -110,7 +111,9 @@
     var hora=0;
 
     function inicio() {
-      setInterval(cronometrar,1000);
+      localDB.init();
+      //localDB.dropTables();
+      //setInterval(cronometrar,1000);
     }
 
       function cronometrar() {
@@ -150,18 +153,377 @@
       }
 
 
-  </script>
+var localDB = {
+    init: function () {
+      
+      this.initDatabase();
+      
+      // Button and link actions
+      /*$('#clear').on('click', function(){ 
+        localDB.dropTables(); 
+      });
+      
+      $('#update').on('click', function(){ 
+        localDB.updateSetting(); 
+      });*/
+
+    },
+
+    initDatabase: function() {
+      try {
+          if (!window.openDatabase) {
+              alert('Local Databases are not supported by your browser. Please use a Webkit browser for this demo');
+          } else {
+              var shortName = 'SUBASTADB',
+                version = '1.0',
+            displayName = 'SUBASTADB Test',
+            maxSize = 100000; // in bytes
+            
+              SUBASTADB = openDatabase(shortName, version, displayName, maxSize);
+          this.createTables();
+          this.selectAll();
+          }
+      } catch(e) {
+          if (e === 2) {
+              // Version mismatch.
+              console.log("Invalid database version.");
+          } else {
+              console.log("Unknown error "+ e +".");
+          }
+          return;
+      } 
+    },
+    
+    /***
+    **** CREATE TABLE ** 
+    ***/
+    createTables: function() {
+      var that = this;
+      SUBASTADB.transaction(
+            function (transaction) {
+              transaction.executeSql('CREATE TABLE IF NOT EXISTS page_settings(id INTEGER NOT NULL PRIMARY KEY, nombre TEXT NOT NULL, precio INTEGER NOT NULL, img TEXT, oferta TEXT, fecha TEXT, proveedor TEXT);', [], that.nullDataHandler, that.errorHandler);
+            }
+        );
+      this.prePopulate();     
+    },
+
+    /***
+    **** INSERT INTO TABLE ** 
+    ***/    
+    prePopulate: function() {
+      SUBASTADB.transaction(
+          function (transaction) {
+        //Starter data when page is initialized
+        
+        var filas = 16; 
+        var columnas = 7;
+        var data = new Array(filas); // crea una matriz de longitud filas
+        for (var i = 0; i < filas; i++) {
+           data[i] = new Array(columnas); // define cada elemento como una matriz de longitud columnas
+        }
+        
+        //Iphone 7
+        data[0][0] = [ " 1 " ];
+        data[0][1] = [ " Iphone 7 " ];
+        data[0][2] = [ " 50000 " ];
+        data[0][3] = [ " https://www.o2.co.uk/shop/homepage/images/shop15/brand/apple/iphone-7-plus/apple-iphone-7-plus-gallery-img-6.jpg " ];
+        data[0][4] = [ " Alejandra " ];
+        data[0][5] = [ " 20/7/2017 " ];
+        data[0][6] = [ "  Alejandro " ];
+        //McBook Air
+        data[1][0] = [ " 2 " ];
+        data[1][1] = [ " McBook Air " ];
+        data[1][2] = [ " 1200000 " ];
+        data[1][3] = [ " http://www.laptopmag.com/images/uploads/4758/g/apple-macbook-2016-nw-g03.jpg " ];
+        data[1][4] = [ " Fernanda " ];
+        data[1][5] = [ " 21/7/2017 " ];
+        data[1][6] = [ "  Jose " ]; 
+        //Celular Huawei
+        data[2][0] = [ " 3 " ];
+        data[2][1] = [ " Celular Huawei " ];
+        data[2][2] = [ " 55000 " ];
+        data[2][3] = [ " https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/201608/26/00157063410542009_1__640x640.jpg " ];
+        data[2][4] = [ " Yarlin " ];
+        data[2][5] = [ " 21/7/2017 " ];
+        data[2][6] = [ "  Mauricio " ];
+        //Macbook torre
+        data[3][0] = [ " 4 " ];
+        data[3][1] = [ " Macbook torre " ];
+        data[3][2] = [ " 2000000 " ];
+        data[3][3] = [ " http://loogic.com/wp-content/uploads/2013/11/mac.jpg " ];
+        data[3][4] = [ " Mauricio " ];
+        data[3][5] = [ " 21/7/2017 " ];
+        data[3][6] = [ "  Camilo " ];
+        //Apple tv
+        data[4][0] = [ " 5 " ];
+        data[4][1] = [ " Apple tv " ];
+        data[4][2] = [ " 1500000 " ];
+        data[4][3] = [ " https://img.difoosion.com/wp-content/blogs.dir/17/files/2013/01/Apple-TV.jpg " ];
+        data[4][4] = [ " Fernanda " ];
+        data[4][5] = [ " 21/7/2017 " ];
+        data[4][6] = [ "  Mauricio " ];
+        //Apple watch
+        data[5][0] = [ " 6 " ];
+        data[5][1] = [ " Apple watch " ];
+        data[5][2] = [ " 1000000 " ];
+        data[5][3] = [ " https://www.marketingdirecto.com/wp-content/uploads/2013/05/iwatch2.jpg " ];
+        data[5][4] = [ " Mauricio " ];
+        data[5][5] = [ " 21/7/2017 " ];
+        data[5][6] = [ "  Angel " ];
+        //Ipad Apple
+        data[6][0] = [ " 7 " ];
+        data[6][1] = [ " 700000 " ];
+        data[6][2] = [ " Ipad Apple " ];
+        data[6][3] = [ " https://http2.mlstatic.com/parlante-y-base-d-carga-philips-p-productos-apple-d-30-pines-D_NQ_NP_850911-MLU20671434386_042016-F.jpg " ];
+        data[6][4] = [ " Sebastian " ];
+        data[6][5] = [ " 21/7/2017 " ];
+        data[6][6] = [ "  Miguel " ];
+        //Camara
+        data[7][0] = [ " 8 " ];
+        data[7][1] = [ " 250000 " ];
+        data[7][2] = [ " Camara " ];
+        data[7][3] = [ " http://www.pcactual.com/medio/2012/03/22/portafolio_samsung_2012_detalle_4_618x501.jpg " ];
+        data[7][4] = [ " Anonimo " ];
+        data[7][5] = [ " 21/7/2017 " ];
+        data[7][6] = [ "  Exito " ];  
+        //Reloj Samsung
+        data[8][0] = [ " 9 " ];
+        data[8][1] = [ " Reloj Samsung " ];
+        data[8][2] = [ " 500000 " ];
+        data[8][3] = [ " http://www.capital.com.pa/wp-content/uploads/2013/09/GALAXY_Gear.jpg " ];
+        data[8][4] = [ " Juan " ];
+        data[8][5] = [ " 21/7/2017 " ];
+        data[8][6] = [ "  Juan " ];
+        //Pantalla Samsung
+        data[9][0] = [ " 10 " ];
+        data[9][1] = [ " Pantalla Samsung " ];
+        data[9][2] = [ " precio " ];
+        data[9][3] = [ " http://2.bp.blogspot.com/-xxXRcCpxXl4/VM-VlGUdjZI/AAAAAAAAAB0/mjppfZDEsUs/s1600/Televisores-Samsung.jpg " ];
+        data[9][4] = [ " Mateo " ];
+        data[9][5] = [ " 21/7/2017 " ];
+        data[9][6] = [ "  Electronica Estrella S.A " ];
+        //Tableta Asus
+        data[10][0] = [ " 11 " ];
+        data[10][1] = [ " Tableta Asus " ];
+        data[10][2] = [ " 100000 " ];
+        data[10][3] = [ " http://cronicasgeek.cd04iemih.maxcdn-edge.com/wp-content/uploads/2016/01/GalaxyTabProS_CES_2016.jpg " ];
+        data[10][4] = [ " Yarlin " ];
+        data[10][5] = [ " 21/7/2017 " ];
+        data[10][6] = [ "  Mateo " ]; 
+        //Carro tesla
+        data[11][0] = [ " 12 " ];
+        data[11][1] = [ " Carro Tesla " ];
+        data[11][2] = [ " 25000000 " ];
+        data[11][3] = [ " http://www.eluniversal.com.mx/sites/default/files/styles/f03-651x400/public/2015/12/09/tesla-model-s-auto.jpg?itok=Han-fdEW " ];
+        data[11][4] = [ " Lance " ];
+        data[11][5] = [ " 21/7/2017 " ];
+        data[11][6] = [ "  Tesla " ];
+        //Samsung Gear
+        data[12][0] = [ " 13 " ];
+        data[12][1] = [ " Samsung Gear " ];
+        data[12][2] = [ " 340000 " ];
+        data[12][3] = [ " http://www.samsung.com/es/a-fondo/images/linked/samsung-gear-s2-y-classic.png " ];
+        data[12][4] = [ " Javier " ];
+        data[12][5] = [ " 21/7/2017 " ];
+        data[12][6] = [ "  Samsung " ];
+        //Google home
+        data[13][0] = [ " 14 " ];
+        data[13][1] = [ " Google Home " ];
+        data[13][2] = [ " 450000 " ];
+        data[13][3] = [ " http://e.rpp-noticias.io/xlarge/2016/10/04/2583801jpg.jpg " ];
+        data[13][4] = [ " Tatiana " ];
+        data[13][5] = [ " 21/7/2017 " ];
+        data[13][6] = [ "  Google " ];
+        //Reloj Google
+        data[14][0] = [ " 15 " ];
+        data[14][1] = [ " Reloj Google " ];
+        data[14][2] = [ " 7000000 " ];
+        data[14][3] = [ " http://cdn1.smart-gsm.com/picture/google-pixel.jpg " ];
+        data[14][4] = [ " Estela " ];
+        data[14][5] = [ " 21/7/2017 " ];
+        data[14][6] = [ "  Google " ];  
+        //Reloj Huawei 2017
+        data[15][0] = [ " 16 " ];
+        data[15][1] = [ " Reloj Huawei " ];
+        data[15][2] = [ " 147000 " ];
+        data[15][3] = [ " http://www.esteticamedica.info/data/img_cont/img_imagenes/img_gr/1690.jpg " ];
+        data[15][4] = [ " Sebas " ];
+        data[15][5] = [ " 21/7/2017 " ];
+        data[15][6] = [ "  Huawei " ];
+
+        for (var i = 0; i < filas; i++) {
+           //var str = "Fila " + i + ":";
+           transaction.executeSql("INSERT INTO page_settings(id, nombre, precio, img, oferta, fecha, proveedor) VALUES (?, ?, ?, ?, ?, ?, ?)", [data[i][0], data[i][1], data[i][2], data[i][3], data[i][4], data[i][5], data[i][6]]);
+           //myVar += str + "; "; // añade a la cadena original el resultado obtenido por cada iteración
+        }
+
+          }
+      );        
+    },
+
+    /***
+    **** UPDATE TABLE ** 
+    ***/
+      updateSetting: function() {
+      SUBASTADB.transaction(
+          function (transaction) {
+          var fname,
+          bg    = $('#bg_color').val(),
+          font  = $('#font_selection').val(),
+          car   = $('#fav_car').val();
+          
+            if($('#fname').val() != '') {
+              fname = $('#fname').val();
+            } else {
+              fname = 'none';
+            }
+          
+            transaction.executeSql("UPDATE page_settings SET fname=?, bgcolor=?, font=?, favcar=? WHERE id = 1", [fname, bg, font, car]);
+          }
+      );  
+      
+      this.selectAll();       
+      },
+      
+      selectAll: function() {
+        var that = this;
+      SUBASTADB.transaction(
+          function (transaction) {
+          transaction.executeSql("SELECT * FROM page_settings;", [], that.dataSelectHandler, that.errorHandler);
+          
+        }
+      );  
+      },
+      
+      dataSelectHandler: function( transaction, results ) {
+      // Handle the results
+      var i=0,
+        row;
+        var html = " ";
+        localStorage["key"] = results.rows;
+        //var keyy = localStorage["key"];
+        //console.log("INTENTO DE VER KEY:");  
+        //console.log(keyy.item(0));
+        for (i ; i<results.rows.length; i++) {
+          
+          row = results.rows.item(i);
+          console.log("ESTO ES ROW: ");
+          console.log(row);
+          //<div class="subasta"><img src="https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/201608/26/00157063410542009_1__640x640.jpg"><p>Celular Huawei</p><h3>$50.000</h3></div>
+          //<a href=__dirname + "/especificacion.html">
+          //__dirname
+          //<a href="./especificacion.html">
+          html = html + '<div id="subasta'+ i + '"class="' + "subasta" + '"><a href="./especificacion.html"><img src="' + row.img + '"><p>' + row.nombre + "</p><h3>$" + row.precio + "</h3></div>"
+            console.log("ESTO ES HTML:");
+            console.log(html);
+
+            /*$('body').css('background-color',row['bgcolor']);
+            $('body').css('font-family',row['font']);
+            $('#content').html('<h4 id="your_car">Your Favorite Car is a '+ row['favcar'] +'</h4>');
+            
+            if(row['fname'] != 'none') {
+              $('#greeting').html('Howdy-ho, '+ row['fname'] +'!');
+              $('#fname').val( row['fname'] );
+            } 
+            
+           $('select#font_selection').find('option[value="'+ row['font'] +'"]').attr('selected','selected');
+           $('select#bg_color').find('option[value="'+ row['bgcolor'] +'"]').attr('selected','selected');  
+           $('select#fav_car').find('option[value="'+ row['favcar'] +'"]').attr('selected','selected');*/
+           //var html = "Hola";
+
+          
+        } 
+        document.getElementById("cuerpo").innerHTML = html;      
+      },
+      
+    /***
+    **** Save 'default' data into DB table **
+    ***/
+      saveAll: function() {
+        this.prePopulate(1);
+      },
+      
+      errorHandler: function( transaction, error ) {
+      
+      if (error.code===1){
+        // DB Table already exists
+      } else {
+          // Error is a human-readable string.
+          console.log('Oops.  Error was '+error.message+' (Code '+ error.code +')');
+      }
+        return false;       
+      },
+      
+      nullDataHandler: function() {
+        console.log("SQL Query Succeeded");
+      },
+      
+    /***
+    **** SELECT DATA **
+    ***/      
+      selectAll: function() {
+        var that = this;
+      SUBASTADB.transaction(
+          function (transaction) {
+              transaction.executeSql("SELECT * FROM page_settings;", [], that.dataSelectHandler, that.errorHandler);
+          }
+      );          
+      },
+      
+    /***
+    **** DELETE DB TABLE ** 
+    ***/
+    dropTables: function() {
+      var that = this;
+      SUBASTADB.transaction(
+          function (transaction) {
+            transaction.executeSql("DROP TABLE page_settings;", [], that.nullDataHandler, that.errorHandler);
+          }
+      );
+      console.log("Table 'page_settings' has been dropped.");
+      //location.reload();      
+    }
+      
+
+  };
+
+  
+//Instantiate Demo
+//localDB.init();
+    function informacion(numero) {
+      //localDB.init();
+      //localDB.dropTables();
+      //setInterval(cronometrar,1000);
+      var keyy = localStorage["key"];
+      console.log("INTENTO DE VER KEY:");  
+      console.log(keyy[numero]);
+      var serializado = "";
+    // Serializar el objeto como una cadena de texto JSON
+    serializado = JSON.stringify(keyy[numero]);
+    var request = new XMLHttpRequest();
+    // Abrir una peticion HTTP POST a la url deseado y no asincronico
+    request.open( "POST", "/cookies", false );
+    // Ejecuta la peticion HTTP
+    request.send( serializado );
+   window.location.href = '/especificacion.html';
+    
+
+
+    }
+
+
+    </script>
 </head>
 <body onload="inicio()">
  <div id="cabeza">
    <h2>SubastaYa.com</h2>
-   <div class="ventas"><button id="boton">Ingresar</button></div>
-   <div class="ventas"><input type="text" id="Ingresar"></div>
-   <a href="./LogIn.html"><div class="ventas" onmouseover="cambiarColor(this)" onmouseout="volverColor(this)">Registrar</div></a>
+   <div class="ventas"><button id="boton" onclick="location='/registrar.html'">Registrar</button></div>
+   <a href="./LogIn.html"><div class="ventas" onmouseover="cambiarColor(this)" onmouseout="volverColor(this)">Ingresar</div></a>
  </div>
 
  <div id="cuerpo">
-   <div class="subasta"><img src="https://www.o2.co.uk/shop/homepage/images/shop15/brand/apple/iphone-7-plus/apple-iphone-7-plus-gallery-img-6.jpg" ><p>Iphone 7</p><h3>$50.000</h3><div class="time"><strong id="horas">00</strong><strong>:</strong><strong id="minutos">00</strong><strong>:</strong><strong id="segundos">00</strong></div></div>
+ <!--
+   <div class="subasta"><img src="https://www.o2.co.uk/shop/homepage/images/shop15/brand/apple/iphone-7-plus/apple-iphone-7-plus-gallery-img-6.jpg" ><p>Iphone 7</p><h3>$50.000</h3><div class="time"><strong id="horas">00</strong><strong>:</strong><strong id="minutos">02</strong><strong>:</strong><strong id="segundos">24</strong></div></div>
 
    <div class="subasta"><a href="./especificacion.html"><img src="http://www.laptopmag.com/images/uploads/4758/g/apple-macbook-2016-nw-g03.jpg"></a><p>MacBook Air</p><h3>$50.000</h3></div>
 
@@ -191,7 +553,7 @@
 
    <div class="subasta"><img src="http://cdn1.smart-gsm.com/picture/google-pixel.jpg"><p>Reloj google</p><h3>$50.000</h3></div>
 
-   <div class="subasta"><img src="http://www.esteticamedica.info/data/img_cont/img_imagenes/img_gr/1690.jpg"><p>Reloj Huawei 2017</p><h3>$50.000</h3></div>
+   <div class="subasta"><img src="http://www.esteticamedica.info/data/img_cont/img_imagenes/img_gr/1690.jpg"><p>Reloj Huawei 2017</p><h3>$50.000</h3></div>//-->
  </div>
 
 </body>

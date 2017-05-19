@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>www.registrar.com</title>
+	<meta charset="utf-8">
+
+	<style type="text/css">
+	    p, h1{
+	    	margin-left: 20px;
+	    	font-family: sans-serif;
+	    	/*text-align: center;*/
+	    	padding-top: 0.5ex;
+
+	    }
+	    p{
+	    	color: white;
+	    }
+	    #container{
+	    	background-color: #581c1c;
+			margin: 0 auto;
+			width: 30%;
+			position: relative;
+			text-align: center;
+			border-radius: 4px;
+	    }
+	    #boton{
+	    	text-align: center;
+	    }
+	    button{
+	    	margin-left: 20px;
+	    	margin: 3ex;
+	    	background-color: #f37736;
+		    border: none;
+		    border-radius: 4px;
+		    padding: 15px 32px;
+		    text-align: center;
+		    text-decoration: none;
+		    font-size: 16px;
+	    }
+	    label{
+	    	font-family: sans-serif;
+	    }
+	    body{
+	    	text-align: center;
+			background-color: #fdf498;
+	    }
+	</style>
+
+	<script type="text/javascript">
+		function obtenerDatos() {
+			var cliente = {}
+			cliente.nombre = document.getElementById('txt_nombre').value;
+			cliente.Correo = document.getElementById('txt_correo').value;
+			cliente.numero = document.getElementById('txt_telefono').value;
+			cliente.pais = document.getElementById('txt_pais').value;
+			cliente.contraseña = document.getElementById('txt_contraseña').value;
+            return cliente;
+			
+		}
+
+		function ingresar() {
+
+			if (verificar()) {
+				alert("el usuario ya existe");
+
+			}else{
+			var cliente = obtenerDatos();
+			var serializado = "";
+			serializado = JSON.stringify(cliente);
+			console.log(serializado);
+
+			var request = new XMLHttpRequest();
+			request.open("POST","/registro",false);
+			request.send(serializado);
+			console.log("completamente correcata");
+		  }
+		}
+
+
+		function cargarDatos() {
+		  var xml = new XMLHttpRequest();
+	      xml.open("GET","/usuarios",false);
+	      xml.send( );
+	      var respuesta = xml.responseText;
+          console.log(respuesta);
+          return JSON.parse(respuesta);
+		}
+
+		function verificar() {
+			var datos = cargarDatos();
+			var user = obtenerDatos();
+			var vandera = false;
+
+			for(var i = 0; i < datos.length; i++){
+				var Correo = datos[i].Correo;
+				if (Correo == datos.Correo){
+					vandera = true;
+				}
+			}
+			return vandera;
+		}
+	</script>
+</head>
+<body>
+  <h1>Pagina de registro subastas.com</h1>
+<div id="container">
+<p>
+	<label>Nombre</label>
+	<input type="text" id="txt_nombre">
+</p>
+
+<p>
+	<label>Correo electronico</label>
+	<input type="text" id="txt_correo">
+</p>
+
+<p>
+	<label>Numero telefonico</label>
+	<input type="text" id="txt_telefono">
+</p>
+
+<p>
+	<label>Pais</label>
+	<input type="text" id="txt_pais">
+</p>
+
+<p>
+	<label>Contraseña</label>
+	<input type="password" id="txt_contraseña">
+</p>
+
+<p>
+	<label>Repetir Contraseña</label>
+	<input type="password" id="txt_recontraseña">
+</p>
+<div id="boton"><button id="ingresar" onclick="ingresar()">Registrar</button></div>
+</div>    
+</body>
+</html>
